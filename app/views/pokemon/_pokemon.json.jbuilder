@@ -6,3 +6,9 @@ json.extract! pokemon,
   :moves,
   :name,
   :poke_type
+
+if display_toys
+  json.toys pokemon.toys.each do |toy|
+    json.partial! 'toys/toy', toy: toy
+  end
+end

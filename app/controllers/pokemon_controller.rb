@@ -20,7 +20,7 @@ class PokemonController < ApplicationController
     render 'index'
   end
 
-  def  show
+  def show
     @pokemon = Pokemon.find(params[:id])
     render 'show'
   end

@@ -1,5 +1,5 @@
 Pokedex.RootView.prototype.addToyToList = function (toy) {
-  return $(
+  var $li = $(
     '<li ' +
       'data-toy-id="' + toy.get('id') + '" ' +
       'data-pokemon-id="' + toy.get('pokemon_id') + '">' +
@@ -8,6 +8,7 @@ Pokedex.RootView.prototype.addToyToList = function (toy) {
       'Price: ' + toy.get('price') +
     '</li>'
   );
+  this.$pokeDetail.find('ul.toys').append($li);
 };
 
 Pokedex.RootView.prototype.renderToyDetail = function (toy) {
@@ -18,6 +19,19 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) {
       $div.append('<br/>' + prop + ': ' + toy.get(prop));
     }
   }
+  $div.append("<br/><strong>Pokemon:</strong>");
+  var $select = $('<select/>', {
+    'data-pokemon-id': toy.get('pokemon_id'),
+    'data-toy-id': toy.get('id')
+  });
+  this.pokes.forEach(function (pokemon) {
+    var option = $('<option/>', {
+      value: pokemon.get('id'),
+      text: pokemon.get('name')
+    });
+    $select.append(option);
+  });
+  $div.append($select);
   this.$toyDetail.html($div);
 };
 

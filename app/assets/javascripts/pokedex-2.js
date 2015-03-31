@@ -25,11 +25,14 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) {
     'data-toy-id': toy.get('id')
   });
   this.pokes.forEach(function (pokemon) {
-    var option = $('<option/>', {
+    var $option = $('<option/>', {
       value: pokemon.get('id'),
       text: pokemon.get('name')
     });
-    $select.append(option);
+    if (pokemon.get('id') === toy.get('pokemon_id')) {
+      $option.prop('selected', true);
+    }
+    $select.append($option);
   });
   $div.append($select);
   this.$toyDetail.html($div);

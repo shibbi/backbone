@@ -42,19 +42,21 @@ body {
 #pokedex > * {
 	height: 100%;
 	width: 33.33333333333%;
-	border: thin solid blue;
+	/*border-left: thin solid blue;
+  border-top: thin solid blue;
+  border-bottom: thin solid blue;*/
   display:  inline-block;
 	overflow: auto;
 }
 
 .poke-list-item, .toy-list-item {
-	border: thin solid red;
+	border: thin solid lightblue;
 	padding: 10px;
 	cursor: pointer;
 }
 
 .poke-list-item:hover, .toy-list-item:hover {
-	background-color: tomato;
+	background-color: lightblue;
 	color: white;
 }
 
@@ -74,7 +76,7 @@ body {
 
 .new-pokemon, .detail {
   padding: 10px;
-  border: thick yellow dotted;
+  border: thick lightblue solid;
 }
 
 .flavor {
@@ -99,18 +101,48 @@ body {
   margin-left: 100px;
 }
 
-.toy {
-  border: thin solid tomato;
+.detail h3 {
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 36px;
+  color: lightblue;
+}
+
+.pokemon-info {
+  float: left;
+  width: 50%;
+}
+
+.pokemon-info ul {
+  border: thin solid lightblue;
+}
+
+.pokemon-info li {
+  list-style: none;
+}
+
+.toys-container {
+  float: right;
+  width: 45%;
   padding: 4px;
   border-radius: 2px;
   margin: 2px;
 }
-.toy:hover {
+
+.toys li {
+  padding: 4px 2px;
+  list-style: none;
+  border: thin solid lightblue;
+}
+
+.toys:hover {
   cursor: pointer;
 }
 
 .detail img {
-  float: left;
+  margin: 0 auto;
+  display:block;
   max-width: 300px;
   max-height: 200px;
 }

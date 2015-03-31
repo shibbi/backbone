@@ -30,7 +30,6 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
     this.collection.each(function(pokemon) {
       this.addPokemonToList(pokemon);
     }, this);
-    // debugger;
     return this;
   },
 
@@ -50,6 +49,7 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
     this.model.fetch({
       success: function () {
         this.render();
+          options.callback && options.callback();
       }.bind(this)
     });
   },

@@ -48,6 +48,7 @@ body {
 }
 
 .poke-list-item, .toy-list-item {
+  list-style: none;
 	border: thin solid red;
 	padding: 10px;
 	cursor: pointer;

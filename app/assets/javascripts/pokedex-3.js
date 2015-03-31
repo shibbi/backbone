@@ -1,5 +1,6 @@
 Pokedex.RootView.prototype.reassignToy = function (event) {
   var $select = $(event.currentTarget);
+
   var oldPokeId = $select.data('pokemon-id');
   var toyId = $select.data('toy-id');
   var newPokeId = $select.val();
@@ -18,6 +19,7 @@ Pokedex.RootView.prototype.reassignToy = function (event) {
 
 Pokedex.RootView.prototype.renderToysList = function (toys) {
   this.$pokeDetail.find('.toys').empty();
+  
   toys.forEach(function (toy) {
     this.addToyToList(toy);
   }.bind(this));

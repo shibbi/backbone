@@ -111,11 +111,3 @@ window.Pokedex.RootView = function ($el) {
     'change', 'select', this.reassignToy.bind(this)
   );
 };
-
-/*
-$(function() {
-  var $rootEl = $('#pokedex');
-  window.Pokedex.rootView = new Pokedex.RootView($rootEl);
-  window.Pokedex.rootView.refreshPokemon();
-});
-*/

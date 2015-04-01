@@ -9,6 +9,7 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
     if (!this.collection) {
       this.collection = new Pokedex.Collections.Pokemon();
     }
+    this.listenTo(this.collection, 'sync', this.render);
   },
 
   addPokemonToList: function (pokemon) {
@@ -45,6 +46,10 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
     "click .toys li": "selectToyFromList"
   },
 
+  // initialize: function () {
+  //   this.listenTo(this.model.toys(), 'sync', this.render);
+  // },
+
   refreshPokemon: function (options) {
     this.model.fetch({
       success: function () {
@@ -55,12 +60,14 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
   },
 
   render: function () {
+    $(".toy-detail").empty();
     var pokeDetail = JST["pokemonDetail"]({ pokemon: this.model });
     this.$el.append(pokeDetail);
     this.model.toys().each(function (toy) {
       var toyListItem = JST["toyListItem"]({ toy: toy });
       $(".toys").append(toyListItem);
     }.bind(this));
+
     return this;
   },
 
@@ -74,15 +81,52 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
 });
 
 Pokedex.Views.ToyDetail = Backbone.View.extend({
+  events: {
+    "change select": "reassignToy"
+  },
+
   render: function () {
-    var toyDetail = JST["toyDetail"]({ toy: this.model, pokes: _([]) });
-    this.$el.append(toyDetail);
+    if (!this._pokeList) {
+      this._pokeList = new Pokedex.Collections.Pokemon();
+      this._pokeList.fetch({
+        success: function () {
+          this.render();
+        }.bind(this)
+      });
+      return this;
+    }
+    var toyDetail = JST["toyDetail"]({ toy: this.model,
+                                       pokes: this._pokeList });
+    this.$el.html(toyDetail);
     return this;
+  },
+
+  reassignToy: function (event) {
+    var $target = $(event.currentTarget);
+
+    var pokemon = this._pokeList.get($target.data("pokemon-id"));
+    // var toy = pokemon.toys().get($target.data("toy-id"));
+    // toy.set("pokemon_id", $target.val());
+    // toy.save({}, {
+    //   success: function () {
+    //     pokemon.toys().remove(toy);
+    //     Backbone.history.navigate('pokemon/' + pokemon.id,
+    //                               { trigger: true });
+    //   }.bind(this)
+    // });
+
+    pokemon.fetch({
+      success: function () {
+        var toy = pokemon.toys().get($target.data("toy-id"));
+        toy.set("pokemon_id", $target.val());
+        toy.save({}, {
+          success: function () {
+            pokemon.toys().remove(toy);
+            Backbone.history.navigate('pokemon/' + pokemon.id,
+                                      { trigger: true });
+          }.bind(this)
+        });
+      }.bind(this)
+    });
   }
 });
-
-// $(function () {
-//   var pokemonIndex = new Pokedex.Views.PokemonIndex();
-//   pokemonIndex.refreshPokemon();
-//   $("#pokedex .pokemon-list").html(pokemonIndex.$el);
-// });

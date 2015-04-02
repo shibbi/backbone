@@ -1,4 +1,6 @@
 class Api::EntriesController < ApplicationController
+  before_action :ensure_logged_in
+  
   def index
     feed = Feed.find(params[:feed_id])
     render :json => feed.entries

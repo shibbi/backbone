@@ -7,6 +7,7 @@ NewsReader.Views.FeedShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this._subviews = [];
   },
 
   render: function () {
@@ -22,6 +23,7 @@ NewsReader.Views.FeedShow = Backbone.View.extend({
         model: entry
       });
       this.$('.entries').append(entryView.render().$el);
+      this._subviews.push(entryView);
     }.bind(this));
 
 
@@ -32,7 +34,10 @@ NewsReader.Views.FeedShow = Backbone.View.extend({
     this.model.fetch();
   },
 
-  addEntry: function () {
-
-  },
+  remove: function () {
+    this._subviews.forEach( function(subview) {
+      subview.remove();
+    });
+    Backbone.View.prototype.remove.call(this);
+  }
 });

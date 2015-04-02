@@ -6,10 +6,6 @@ NewsReader.Views.FeedForm = Backbone.View.extend({
     "submit": "addFeed"
   },
 
-  initialize: function () {
-    // this.listenTo(this.collection, "sync remove", this.render);
-  },
-
   render: function () {
     var content = this.template();
     this.$el.html(content);

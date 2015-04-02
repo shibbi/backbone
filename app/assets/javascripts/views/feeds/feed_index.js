@@ -3,6 +3,7 @@ NewsReader.Views.FeedIndex = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, "sync remove", this.render);
+    this._subviews = [];
   },
 
   render: function () {
@@ -15,6 +16,7 @@ NewsReader.Views.FeedIndex = Backbone.View.extend({
       collection: this.collection
     });
     this.$('.feeds').before(feedFormView.render().$el);
+    this._subviews.push(feedFormView);
 
     this.collection.each(function (feed) {
       var feedItemView = new NewsReader.Views.FeedIndexItem({
@@ -22,9 +24,18 @@ NewsReader.Views.FeedIndex = Backbone.View.extend({
         collection: this.collection
       });
       this.$('.feeds').append(feedItemView.render().$el);
+      this._subviews.push(feedItemView);
     }.bind(this));
 
+
     return this;
+  },
+
+  remove: function () {
+    this._subviews.forEach( function(subview) {
+      subview.remove();
+    });
+    Backbone.View.prototype.remove.call(this);
   }
 
 });

@@ -6,11 +6,15 @@ NewsReader.Collections.Feeds = Backbone.Collection.extend({
     var feed = this.get(id);
 
     if (!feed) {
-      feed = new NewsReader.Models.Feed({ id: id })
-      this.add(feed);
+      feed = new NewsReader.Models.Feed({ id: id });
+      feed.fetch({
+        success: function () {
+          this.add(feed);
+        }.bind(this)
+      });
+    } else {
+      feed.fetch();
     }
-
-    feed.fetch();
 
     return feed;
   }

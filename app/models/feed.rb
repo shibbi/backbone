@@ -12,7 +12,7 @@
 require 'open-uri'
 
 class Feed < ActiveRecord::Base
-  has_many :entries, :dependent => :destroy
+  has_many :entries, :dependent => :destroy, order: "published_at DESC"
 
   def self.find_or_create_by_url(url)
     feed = Feed.find_by_url(url)
@@ -35,6 +35,7 @@ class Feed < ActiveRecord::Base
     if self.updated_at < 30.seconds.ago
       reload
     end
+
     entries
   end
 

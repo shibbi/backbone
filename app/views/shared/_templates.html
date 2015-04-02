@@ -8,16 +8,25 @@
 </script>
 
 <script type="text/template" id="pokemon-detail-template">
-  <div class="detail">
+  <div class="detail pokemon">
+    <h3><%%= pokemon.get('name') %></h3>
     <img src="<%%= pokemon.get('image_url') %>"><br>
-    <%% for (var attr in pokemon.attributes) { %>
-      <%% if (pokemon.get(attr) && attr !== 'id' && attr !== 'image_url') { %>
-        <span style="font-weight:bold;"><%%= attr %>: </span>
-        <%%= pokemon.get(attr) %><br>
-      <%% } %>
-    <%% } %>
-    <ul class="toys">
-    </ul>
+    <div class="pokemon-info">
+      <span style="font-weight:bold;">Details:</span><br>
+      <div class="list-item">
+        <%% for (var attr in pokemon.attributes) { %>
+          <%% if (['id','name','image_url'].indexOf(attr) === -1) { %>
+            <span style="font-weight:bold;"><%%= attr %>: </span>
+            <%%= pokemon.get(attr) %><br>
+          <%% } %>
+        <%% } %>
+      </div>
+    </div>
+    <div class="toys-container">
+      <span style="font-weight:bold;">Toys:</span><br>
+      <ul class="toys">
+      </ul>
+    </div>
   </div>
 </script>
 
@@ -25,7 +34,6 @@
   <li class="toy-list-item"
       data-id="<%%= toy.get('id') %>"
       data-pokemon-id="<%%= toy.get('pokemon_id') %>">
-
       <%% var shortInfo = ['name', 'happiness', 'price']; %>
       <%% shortInfo.forEach(function (attr) { %>
         <span style="font-weight:bold;"><%%= attr %>: </span>
@@ -36,23 +44,27 @@
 
 <script type="text/template" id="toy-detail-template">
   <div class="detail">
+    <h3><%%= toy.get('name') %></h3>
     <img src="<%%= toy.get('image_url') %>"><br>
-    <%% for (var attr in toy.attributes) { %>
-      <%% if(attr !== 'pokemon_id' && attr !== 'image_url') { %>
-        <span style="font-weight:bold;"><%%= attr + ': '%></span>
-        <%%= toy.get(attr) %><br>
+    <div class="list-item">
+      <%% for (var attr in toy.attributes) { %>
+        <%% if(['id','name','pokemon_id','image_url'].indexOf(attr) === -1) { %>
+          <span style="font-weight:bold;"><%%= attr + ': '%></span>
+          <%%= toy.get(attr) %><br>
+        <%% } %>
       <%% } %>
-    <%% } %>
-    <select data-pokemon-id="<%%= toy.get("pokemon_id") %>"
-            data-toy-id="<%%= toy.get("id") %>">
-      <%% pokes.each(function (pokemon) { %>
-        <option value="<%%= pokemon.get("id") %>"
-            <%%= pokemon.id === toy.get("pokemon_id") ? "selected" : "" %>
-          >
-          <%%= pokemon.get("name") %>
-        </option>
-      <%% }); %>
-    </select>
+      <span style="font-weight:bold;">owner: </span>
+      <select data-pokemon-id="<%%= toy.get("pokemon_id") %>"
+              data-toy-id="<%%= toy.get("id") %>">
+        <%% pokes.each(function (pokemon) { %>
+          <option value="<%%= pokemon.get("id") %>"
+              <%%= pokemon.id === toy.get("pokemon_id") ? "selected" : "" %>
+            >
+            <%%= pokemon.get("name") %>
+          </option>
+        <%% }); %>
+      </select>
+    </div>
   </div>
 </script>
 

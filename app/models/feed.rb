@@ -12,6 +12,7 @@
 require 'open-uri'
 
 class Feed < ActiveRecord::Base
+  validates :title, :url, presence: true
   has_many :entries, :dependent => :destroy, order: "published_at DESC"
 
   def self.find_or_create_by_url(url)
@@ -24,7 +25,7 @@ class Feed < ActiveRecord::Base
       feed_data.entries.each do |entry_data|
         Entry.create_from_json!(entry_data, feed)
       end
-    rescue SimpleRSSError
+    rescue
       return nil
     end
 

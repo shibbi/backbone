@@ -11,6 +11,8 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :feeds
+
   validates :email, :session_token, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
@@ -46,5 +48,9 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def favorite_feeds
+    feeds.where(favorite: true)
   end
 end

@@ -10,7 +10,10 @@ NewsReader.Collections.Feeds = Backbone.Collection.extend({
       feed.fetch({
         success: function () {
           this.add(feed);
-        }.bind(this)
+        }.bind(this),
+        error: function () {
+          Backbone.history.navigate('', { trigger: true });
+        }
       });
     } else {
       feed.fetch();

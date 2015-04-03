@@ -2,15 +2,21 @@ class Api::FeedsController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    render :json => Feed.all
+    render :json => current_user.feeds
   end
 
   def show
-    render :json => Feed.find(params[:id]), include: :latest_entries
+    feed = Feed.find(params[:id])
+    if feed.user != current_user
+      render :json => { error: "can't access feed that's not yours"},
+                      status: 403
+    else
+      render :json => feed, include: :latest_entries
+    end
   end
 
   def create
-    feed = Feed.find_or_create_by_url(feed_params[:url])
+    feed = Feed.find_or_create_by_url(feed_params[:url], current_user.id)
     if feed
       render :json => feed
     else
@@ -20,8 +26,13 @@ class Api::FeedsController < ApplicationController
 
   def destroy
     feed = Feed.find(params[:id])
-    feed.destroy
-    render :json => Feed.all
+    if feed.user != current_user
+      render :json => { error: "can't delete feed that's not yours"},
+                      status: 403
+    else
+      feed.destroy
+      render :json => current_user.feeds
+    end
   end
 
   private

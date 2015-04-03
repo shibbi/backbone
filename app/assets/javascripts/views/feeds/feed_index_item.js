@@ -3,7 +3,8 @@ NewsReader.Views.FeedIndexItem = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    "click button": "deleteFeed"
+    "click button.favorite": "toggleFavoriteFeed",
+    "click button.delete": "deleteFeed"
   },
 
   render: function () {
@@ -21,6 +22,17 @@ NewsReader.Views.FeedIndexItem = Backbone.View.extend({
     this.model.destroy({
       success: function () {
         this.collection.remove(this.model);
+      }.bind(this)
+    });
+  },
+
+  toggleFavoriteFeed: function(event) {
+    var $currentTarget = $(event.currentTarget);
+    var currentValue = $currentTarget.text();
+    var toggle = (currentValue === "favorite") ? true : false;
+    this.model.save({ favorite: toggle },{
+      success: function () {
+        this.render();
       }.bind(this)
     });
   }

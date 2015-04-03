@@ -24,6 +24,17 @@ class Api::FeedsController < ApplicationController
     end
   end
 
+  def update
+    feed = Feed.find(params[:id])
+    if feed.user != current_user
+      render :json => { error: "can't access feed that's not yours"},
+                      status: 403
+    else
+      feed.update(feed_params)
+      render :json => feed, include: :latest_entries
+    end
+  end
+
   def destroy
     feed = Feed.find(params[:id])
     if feed.user != current_user
@@ -38,6 +49,6 @@ class Api::FeedsController < ApplicationController
   private
 
   def feed_params
-    params.require(:feed).permit(:title, :url)
+    params.require(:feed).permit(:title, :url, :favorite)
   end
 end

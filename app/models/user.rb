@@ -11,7 +11,7 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :feeds
+  has_many :feeds, -> { order(created_at: :desc) }
 
   validates :email, :session_token, presence: true
   validates :email, uniqueness: true

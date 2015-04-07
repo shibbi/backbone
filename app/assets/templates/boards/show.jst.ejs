@@ -1,0 +1,35 @@
+<h1>
+  <%= board.escape('title') %>
+  <button class="board-delete btn btn-primary">Delete board</button>
+</h1>
+
+<ul class="lists">
+  <% if (board.lists.length !== 0) { %>
+    <% board.lists.forEach(function (list) { %>
+      <li class="list">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= list.get('title') %>
+              <button class="list-delete btn btn-primary"
+                      data-id="<%= list.id %>"
+                      data-title="<%= list.get('title') %>">
+                Delete
+              </button>
+            </h3>
+          </div>
+          <div class="panel-body">
+            Cards go here :D
+          </div>
+        </div>
+      </li>
+    <% }) %>
+  <% } %>
+  <li class="list-create">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a href="#/boards/<%= board.id %>/lists/new">Add new list...</a>
+      </div>
+    </div>
+  </li>
+</ul>

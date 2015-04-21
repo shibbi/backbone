@@ -8,3 +8,4 @@ development:
   database: news_reader_dev
   pool: 5
   timeout: 5000
+  host: localhost

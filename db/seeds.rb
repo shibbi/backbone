@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user = User.create(email: 'guest@example.com', password: 'password')
+
 urls = [
   'http://lorem-rss.herokuapp.com/feed?unit=second&interval=10',
   'http://feeds.wired.com/wired/index',
@@ -14,5 +16,5 @@ urls = [
 ]
 
 urls.each do |url|
-  Feed.find_or_create_by_url url
+  Feed.find_or_create_by_url url, user.id
 end

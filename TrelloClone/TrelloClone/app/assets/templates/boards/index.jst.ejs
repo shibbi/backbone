@@ -1,0 +1,8 @@
+<% boards.each(function (board) { %>
+<li class="board btn btn-primary">
+  <a href="#/boards/<%= board.id %>"><%= board.escape('title') %></a>
+</li>
+<% }) %>
+<li class="board-create btn">
+  <a href="#/boards/new">Create new board</a>
+</li>

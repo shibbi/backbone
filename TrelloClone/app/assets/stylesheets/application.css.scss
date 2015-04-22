@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.ui.all
+ *= require_tree .
+ */
+
+@import "bootstrap";
+@import "font-awesome";
+
+/* General */
+ul {
+  list-style: none;
+}
+
+/* Navbar */
+
+.navbar {
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #026aa7;
+  img.logo {
+    height: 50px;
+  }
+}
+
+/* Boards Index */
+
+.board, .board-create {
+  height: 100px;
+  width: 20%;
+  margin: 10px;
+  float: left;
+  display: block;
+  a {
+    text-decoration: none;
+    text-align: center;
+    line-height: 86px;
+    color: #fff;
+    font-size: 20px;
+    display: block;
+  }
+}
+
+.board-create {
+  background-color: #aaa;
+  &:hover {
+    background-color: #ccc;
+    border: none;
+  }
+}
+
+#main::after {
+  content: "";
+  overflow: auto;
+}
+
+/* Board Show */
+
+.board-show {
+  background-color: rgb(14, 116, 175);
+  * {
+    color: white;
+  }
+  .backdrop {
+    margin: 0px 20px;
+  }
+}
+
+/* Lists */
+
+.list, .list-create {
+  width: 20%;
+  float: left;
+  margin: 0 30px 0 0;
+}
+
+.panel { height: 150px; }
+
+.panel-heading {
+  height: 50px;
+  * { line-height: 29px; }
+}
+
+.list-create.panel { height: 50px; }
+
+.list * { color: black; }
+
+.list-create * {
+  color: white;
+  a {
+    line-height: 120px;
+    display: block;
+    text-decoration: none;
+    &:hover { color: white }
+  }
+}
+
+.list-create .panel-default {
+  background-color: #026aa7;
+  border-color: #026aa7;
+  &:hover { background-color: #004873; }
+}
+
+.list-delete {
+  height: 29px;
+  border: none;
+  padding: 0 5px 5px 5px;
+  color: white;
+  position: relative;
+  float: right;
+  * { font-size: 14px; }
+}
+
+ul.lists::after {
+  content: "";
+  overflow: auto;
+}

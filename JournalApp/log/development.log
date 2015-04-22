@@ -1,0 +1,184 @@
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (27.1ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150401170751')
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.8ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150401170751')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2015-04-21 16:39:31 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RootController#root as HTML
+  Rendered root/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 609ms (Views: 608.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/posts-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/root-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/application-5266d2988799ecc8fe6e81eaab412e7d.css?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/jquery.serializejson-900c747731a107514873fd69a831ac1e.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/underscore-d431f9168936f2543e94df66a0ed8c23.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/backbone-393a840dc90861d7b4dc2b8ddb40420f.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/journal_app-26ca8f96204c96674c7fe1003f31321f.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/posts/index-22f07a04a32ff0f6b7c61845f0585d44.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/posts/index_item-036b7eae13a353b2441a2afdecb89a65.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/posts/post_form-981b8914bd5e14490a48ec09869661bc.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/posts/show-d3ff0d94f1db6e978d021acbe7737c9e.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/models/post-e723c9bf336e80c8c681d3a2ae155b14.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/collections/posts-e9051795e3be0768ba6d2b87d7f8db92.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/views/post_form-2a6aecb221cee7c67f0f335408062d08.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/views/posts_index-22d5d3715a654b42b1cee241b987f068.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/views/posts_index_item-8e8e476bf0cfa2bbf5e2ec8756756d8a.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/views/posts_show-0e0982be89025fa0f59b3e2899a2231b.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/routers/posts_router-0b69bdf4f2ee33c675794637c9f7ae2f.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/posts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/root-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/assets/application-3cec5b35478be264248c7ef361be96ab.js?body=1" for ::1 at 2015-04-21 16:39:32 -0700
+
+
+Started GET "/posts" for ::1 at 2015-04-21 16:39:33 -0700
+Processing by PostsController#index as JSON
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/posts" for ::1 at 2015-04-21 16:40:10 -0700
+Processing by PostsController#index as JSON
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2015-04-21 16:40:39 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RootController#root as HTML
+  Rendered root/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 265ms (Views: 264.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/posts-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/application-5266d2988799ecc8fe6e81eaab412e7d.css?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/root-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/jquery.serializejson-900c747731a107514873fd69a831ac1e.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/underscore-d431f9168936f2543e94df66a0ed8c23.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/backbone-393a840dc90861d7b4dc2b8ddb40420f.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/journal_app-26ca8f96204c96674c7fe1003f31321f.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/posts/index-22f07a04a32ff0f6b7c61845f0585d44.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/posts/index_item-036b7eae13a353b2441a2afdecb89a65.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/posts/post_form-981b8914bd5e14490a48ec09869661bc.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/posts/show-d3ff0d94f1db6e978d021acbe7737c9e.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/models/post-e723c9bf336e80c8c681d3a2ae155b14.js?body=1" for ::1 at 2015-04-21 16:40:39 -0700
+
+
+Started GET "/assets/collections/posts-e9051795e3be0768ba6d2b87d7f8db92.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/views/post_form-2a6aecb221cee7c67f0f335408062d08.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/views/posts_index-22d5d3715a654b42b1cee241b987f068.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/views/posts_index_item-8e8e476bf0cfa2bbf5e2ec8756756d8a.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/views/posts_show-0e0982be89025fa0f59b3e2899a2231b.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/routers/posts_router-0b69bdf4f2ee33c675794637c9f7ae2f.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/posts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/root-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/assets/application-3cec5b35478be264248c7ef361be96ab.js?body=1" for ::1 at 2015-04-21 16:40:40 -0700
+
+
+Started GET "/posts" for ::1 at 2015-04-21 16:40:40 -0700
+Processing by PostsController#index as JSON
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.8ms)

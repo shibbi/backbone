@@ -1,0 +1,12 @@
+<br>
+<% if (errors) { %>
+  <%= errors %><br>
+<% } %>
+
+Title:
+<input type="text" name="post[title]" value="<%= post.escape('title') %>">
+<br>
+Body:
+<textarea name="post[body]"><%= post.escape('body') %></textarea>
+<br>
+<input type="submit" value="Submit">

@@ -1,1 +1,0 @@
-NewsReader::Application.config.secret_key_base = 'a670db113c6c6702dd2c21e7185472e5d4a7879fcbe80bb0be207e97a832fedfb4cfa4a00dbb0332f3bd9b2f5f85e7a2ffb224cb3c2ead67ce4a5cf158da6542'

@@ -1,11 +1,11 @@
-<<<<<<< HEAD
 *.rbc
 capybara-*.html
 .rspec
 /log
 /tmp
+<<<<<<< HEAD
+=======
 /db/*.sqlite3
-/db/*.sqlite3-journal
 /public/system
 /coverage/
 /spec/tmp
@@ -31,10 +31,4 @@ config/secrets.yml
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
-
-# Ignore pow environment settings
-.powenv
-=======
-/log
-/tmp
->>>>>>> 24863473bc66b5725a6560d089f6ae43a2395551
+>>>>>>> 87f234b331ac02e365ddd7973dffe175fb5a944b
